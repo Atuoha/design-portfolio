@@ -749,6 +749,17 @@ h6 {
   animation: heroUp 1s .6s forwards;
 }
 
+.hero-visual-col {
+  position: relative;
+  left: 0;
+}
+
+@media (min-width: 992px) {
+  .hero-visual-col {
+    left: 40px; /* Adjusted to be closer as requested */
+  }
+}
+
 /* Central photo */
 .hero-photo {
   position: absolute;
