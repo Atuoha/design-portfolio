@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Peace Atuoha — Product Designer (UI/UX)</title>
+  <meta name="title" content="Peace Atuoha — Product Designer (UI/UX)" />
+  <meta name="description" content="Peace Atuoha is a Product Designer (UI/UX) based in Lagos, Nigeria crafting bold, meaningful digital experiences." />
+  <meta name="author" content="Peace Atuoha" />
+  <meta name="theme-color" content="#f8f8fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#07070f" media="(prefers-color-scheme: dark)" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="peace.jpg" />
+  <link rel="apple-touch-icon" href="peace.jpg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atuoha.github.io/design-portfolio/" />
+  <meta property="og:title" content="Peace Atuoha — Product Designer (UI/UX)" />
+  <meta property="og:description" content="Peace Atuoha is a Product Designer (UI/UX) based in Lagos, Nigeria crafting bold, meaningful digital experiences." />
+  <meta property="og:image" content="https://atuoha.github.io/design-portfolio/peace.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://atuoha.github.io/design-portfolio/" />
+  <meta property="twitter:title" content="Peace Atuoha — Product Designer (UI/UX)" />
+  <meta property="twitter:description" content="Peace Atuoha is a Product Designer (UI/UX) based in Lagos, Nigeria crafting bold, meaningful digital experiences." />
+  <meta property="twitter:image" content="https://atuoha.github.io/design-portfolio/peace.jpg" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Shooting lines canvas (behind everything) -->
+<canvas id="lines-canvas"></canvas>
+<div class="noise-overlay"></div>
+
+<!-- Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="cursor-label"></div>
+
+<!-- Toast -->
+<div id="toast">
+  <i class="bi bi-check-circle-fill" style="color:var(--pink)"></i>
+  <span data-toast-msg>Message sent! I'll get back to you.</span>
+</div>
+
+<!-- Gallery Lightbox -->
+<div id="gallery-lightbox" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lb-close" aria-label="Close"><i class="bi bi-x"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+    <img id="lb-img" class="lightbox-img" src="" alt="Gallery image" />
+    <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+    <div class="lightbox-count" id="lb-count"></div>
+  </div>
+</div>
+
+<!-- ==============================================================
+     NAVBAR
+============================================================== -->
+<nav id="navbar">
+  <div class="container d-flex justify-content-between align-items-center gap-3">
+    <a href="index.html" class="nav-logo">Peace<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#social">Connect</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="d-flex align-items-center gap-2">
+      <!-- Theme toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="t-sun">☀️</span>
+        <span class="t-moon">🌙</span>
+      </button>
+      <a href="#contact" class="nav-cta d-none d-lg-inline-flex align-items-center gap-2">
+        Hire Me <i class="bi bi-arrow-right"></i>
+      </a>
+      <button class="nav-toggler" id="navToggle" aria-label="Toggle menu">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ==============================================================
+     HERO
+============================================================== -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-gradient"></div>
+
+  <div class="container position-relative" style="z-index:3">
+    <div class="row align-items-center">
+
+      <!-- LEFT: Text -->
+      <div class="col-lg-6">
+        <div class="hero-status">
+          <span class="status-dot"></span>Open to opportunities
+        </div>
+        <h1 class="hero-title">
+          <span class="line-white">Peace</span>
+          <span class="line-pink">Atuoha.</span>
+          <span class="line-stroke">Designer.</span>
+        </h1>
+        <p class="hero-tagline">
+          Product Designer (UI/UX) crafting bold, meaningful digital experiences — from pixels to products that people love.
+        </p>
+        <div class="hero-chips">
+          <span class="chip open">Freelance</span>
+          <span class="chip open">Full-Time</span>
+          <span class="chip open">Part-Time</span>
+          <span class="chip open">Permanent</span>
+          <span class="chip open">Contracts</span>
+        </div>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-pink">View My Work <i class="bi bi-arrow-right"></i></a>
+          <a href="#contact" class="btn-ghost">Get In Touch</a>
+          <a href="https://linktr.ee/peacefulatuoha" target="_blank" rel="noopener" class="btn-ghost">
+            <i class="bi bi-link-45deg"></i> Linktree
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Photo + floating tool icons -->
+      <div class="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
+        <div class="hero-visual">
+
+          <!-- Glow orb -->
+          <div class="hero-photo-glow"></div>
+
+          <!-- Dashed orbit rings -->
+          <div class="orbit-ring-deco ring-a"></div>
+          <div class="orbit-ring-deco ring-b"></div>
+
+          <!-- Peace's Photo -->
+          <div class="hero-photo">
+            <img src="peace.jpg"
+                 alt="Peace Atuoha — Product Designer"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#D83675,#7c3aed)'" />
+          </div>
+
+          <!-- ── Floating Tool Icon Cards ───────────────── -->
+
+          <!-- Figma -->
+          <div class="tool-icon t-figma">
+            <svg width="28" height="28" viewBox="0 0 38 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="18" height="18" rx="9" transform="matrix(1 0 0 -1 1 19)" fill="#F24E1E"/>
+              <rect x="1" y="1" width="18" height="18" rx="9" fill="#FF7262"/>
+              <rect x="20" y="1" width="17" height="18" rx="8.5" fill="#A259FF"/>
+              <rect x="1" y="20" width="18" height="17" rx="8.5" fill="#0ACF83"/>
+              <path d="M20 29C20 24.582 23.582 21 28 21H38V37H28C23.582 37 20 33.418 20 29Z" fill="#1ABCFE"/>
+            </svg>
+            <span class="tool-label">Figma</span>
+          </div>
+
+          <!-- Dribbble -->
+          <div class="tool-icon t-dribbble">
+            <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="48" fill="#ea4c89"/>
+              <path d="M50 2a48 48 0 100 96A48 48 0 0050 2zm31.8 22.1c6.5 7.9 10.5 17.8 10.7 28.6-1.6-.3-17.4-3.5-33.3-1.5-.4-.8-.7-1.6-1.1-2.4-1-2.2-2.1-4.4-3.2-6.5 17.8-7.2 25.8-17.6 26.9-18.2zM50 9.7c12.2 0 23.4 4.7 31.7 12.3-1 .5-8.2 10.2-25.4 16.5C48.7 25.2 40.7 16 39.4 14.3A40.6 40.6 0 0150 9.7zM30.3 17.5c1.2 1.6 9.1 10.8 16.7 24.2C28.7 46.5 12.6 46.3 10.8 46.3A40.5 40.5 0 0130.3 17.5zM9.7 50l.1-.8c1.8 0 20.8.4 39.5-5.5.9 1.7 1.8 3.5 2.7 5.3-21.6 6.1-32 23.4-32.9 25A40.4 40.4 0 019.7 50zm40.3 40.3c-11 0-21.1-3.9-29-10.4.7-1.3 9.6-17 33.2-24.2l.4-.1c4.8 12.5 6.8 23 7.3 25.6a40.3 40.3 0 01-11.9 9.1zm19.2-13.4c-.4-2.3-2.2-12.2-6.7-24.5 15.2-2.4 28.7 1.6 30.3 2.1a40.6 40.6 0 01-23.6 22.4z" fill="white"/>
+            </svg>
+            <span class="tool-label">Dribbble</span>
+          </div>
+
+          <!-- Behance -->
+          <div class="tool-icon t-behance" style="background:var(--surface)">
+            <svg width="32" height="32" viewBox="0 0 100 63" xmlns="http://www.w3.org/2000/svg">
+              <path d="M63 5h22v7H63zM74 19c-10 0-18 8-18 18s8 18 18 18c8 0 14-5 17-12H81c-2 4-4 6-8 6-5 0-8-3-9-8H92c0-.7.1-1.3.1-2 0-10-8-18-18-18zm-9 14c1-4 4-7 9-7s8 3 9 7zm-42 2c5-1 8-5 8-10C31 11 24 6 14 6H0v50h15c10 0 19-5 19-16 0-7-4-12-11-13zM9 14h5c4 0 8 2 8 6s-4 6-8 6H9zm6 34H9V34h6c5 0 9 2 9 7s-4 7-9 7z" fill="#0057ff"/>
+            </svg>
+            <span class="tool-label">Behance</span>
+          </div>
+
+          <!-- Mobile -->
+          <div class="tool-icon t-mobile">
+            <i class="bi bi-phone-fill" style="color:#D83675;font-size:1.6rem"></i>
+            <span class="tool-label">Mobile</span>
+          </div>
+
+          <!-- Web -->
+          <div class="tool-icon t-web">
+            <i class="bi bi-globe2" style="color:#0099ff;font-size:1.6rem"></i>
+            <span class="tool-label">Web</span>
+          </div>
+
+          <!-- Desktop -->
+          <div class="tool-icon t-desktop">
+            <i class="bi bi-display-fill" style="color:#7c3aed;font-size:1.6rem"></i>
+            <span class="tool-label">Desktop</span>
+          </div>
+
+          <!-- Tablet -->
+          <div class="tool-icon t-tablet">
+            <i class="bi bi-tablet-fill" style="color:#059669;font-size:1.6rem"></i>
+            <span class="tool-label">Tablet</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ───────────────────────────────────────────────── -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Product Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>UX Research</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Wireframing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Prototyping</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Figma Expert</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Interaction Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Design Systems</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mobile UI/UX</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Dashboard Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Visual Storytelling</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Product Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>UX Research</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Wireframing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Prototyping</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Figma Expert</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Interaction Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Design Systems</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mobile UI/UX</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Dashboard Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Visual Storytelling</span>
+  </div>
+</div>
+
+<!-- ==============================================================
+     ABOUT
+============================================================== -->
+<section id="about" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-5 col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1000">
+        <div class="photo-wrap">
+          <div class="photo-blob"></div>
+          <div class="photo-deco-ring dring-a"></div>
+          <div class="photo-deco-ring dring-b"></div>
+          <div class="photo-frame-outer photo-frame-lg">
+            <div class="photo-frame-inner">
+              <img src="peace.jpg"
+                   alt="Peace Atuoha — Product Designer"
+                   style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block"
+                   onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          <!-- Available badge stays -->
+          <div class="photo-badge badge-status">
+            <div class="badge-num" style="font-size:1rem;color:var(--text)">Available</div>
+            <div class="badge-label"><span class="online-dot"></span>Open to work</div>
+          </div>
+        </div>
+
+       
+      </div>
+
+      <div class="col-lg-7 col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="120">
+        <span class="tag">About Me</span>
+        <h2 class="section-title">I design with <span class="accent">purpose</span>,<br>not just pixels.</h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted);margin-bottom:1.2rem;font-size:.97rem">
+          Hi, I'm <strong style="color:var(--text)">Peace Atuoha</strong> — a Product Designer (UI/UX) based in Lagos, Nigeria, driven by a passion for creating meaningful and visually compelling user experiences that blend creativity with user-centric thinking.
+        </p>
+        <p style="color:var(--muted);margin-bottom:1.6rem;font-size:.97rem">
+          From mobile apps to dashboards and design systems, I bring the same energy every time: <em style="color:var(--text)">curiosity, craft, and empathy.</em> Currently at Atutechs Corp and open to exciting new opportunities across all engagement types.
+        </p>
+
+         <!-- ── CHIP RAIN: skills fall & stack ─────────────── -->
+        <div class="chip-rain-wrap" id="chipRain">
+          <p class="chip-rain-label">Skills &amp; tools I live in</p>
+          <div class="chip-rain-stage">
+            <span class="rain-chip rc-figma"    style="--d:0s">
+              <svg width="14" height="14" viewBox="0 0 38 56" fill="none"><rect width="18" height="18" rx="9" transform="matrix(1 0 0 -1 1 19)" fill="#F24E1E"/><rect x="1" y="1" width="18" height="18" rx="9" fill="#FF7262"/><rect x="20" y="1" width="17" height="18" rx="8.5" fill="#A259FF"/><rect x="1" y="20" width="18" height="17" rx="8.5" fill="#0ACF83"/><path d="M20 29C20 24.582 23.582 21 28 21H38V37H28C23.582 37 20 33.418 20 29Z" fill="#1ABCFE"/></svg>
+              Figma
+            </span>
+            <span class="rain-chip rc-dribbble" style="--d:.12s"><i class="bi bi-dribbble" style="color:#ea4c89"></i>Dribbble</span>
+            <span class="rain-chip rc-behance"  style="--d:.22s"><i class="bi bi-behance"  style="color:#0057ff"></i>Behance</span>
+            <span class="rain-chip rc-spark"    style="--d:.08s">✨ Creativity</span>
+            <span class="rain-chip rc-ux"       style="--d:.30s">🔬 UX Research</span>
+            <span class="rain-chip rc-proto"    style="--d:.18s">⚡ Prototyping</span>
+            <span class="rain-chip rc-mobile"   style="--d:.35s">📱 Mobile UI</span>
+            <span class="rain-chip rc-system"   style="--d:.25s">🧩 Design Systems</span>
+            <span class="rain-chip rc-wire"     style="--d:.40s">📐 Wireframing</span>
+            <span class="rain-chip rc-visual"   style="--d:.15s">🎨 Visual Design</span>
+          </div>
+        </div>
+        <h6 style="font-family:var(--font-head);font-size:.67rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:.8rem">Design Philosophy</h6>
+        <ul class="phil-list">
+          <li>Design is communication — every pixel must earn its place.</li>
+          <li>Empathy first: understand the user before you touch Figma.</li>
+          <li>Simple on the surface, deeply considered underneath.</li>
+          <li>Iteration is the process, not the exception.</li>
+        </ul>
+        <div class="stats-row">
+          <div class="stat-item"><div class="sn">15+</div><div class="sl">Projects</div></div>
+          <div class="stat-item"><div class="sn">1+</div><div class="sl">Years XP</div></div>
+          <div class="stat-item"><div class="sn">36</div><div class="sl">Appreciations</div></div>
+          <div class="stat-item"><div class="sn">∞</div><div class="sl">Good Vibes</div></div>
+        </div>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <a href="https://www.behance.net/peace_atuoha" target="_blank" class="btn-pink btn-sm">View Behance <i class="bi bi-arrow-up-right"></i></a>
+          <a href="https://www.linkedin.com/in/peace-atuoha/" target="_blank" class="btn-ghost btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+        </div>
+      </div>
+
+    </div>
+
+    
+  </div>
+
+  
+</section>
+
+<!-- ==============================================================
+     FEATURED PROJECTS
+============================================================== -->
+<section id="projects" class="section" style="background:var(--bg)">
+  <div class="container">
+
+    <div class="row align-items-end mb-4" data-aos="fade-up">
+      <div class="col-lg-7">
+        <span class="tag">Featured Work</span>
+        <h2 class="section-title">Real projects, <span class="accent">real impact</span></h2>
+        <p class="section-sub">A curated selection from my Behance portfolio — each a story of problem-solving through design.</p>
+      </div>
+      <div class="col-lg-5 d-flex justify-content-lg-end mt-3 mt-lg-0">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="dashboard">Dashboard</button>
+          <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4" id="projectGrid">
+
+      <div class="col-md-6 col-lg-4 project-item" data-category="mobile" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-card" onclick="window.open('https://www.behance.net/gallery/245792605/Realtora-Real-Estate-Mobile-UI','_blank')">
+          <div class="project-thumb">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/808/318f85245792605.Y3JvcCwyMjg4LDE3OTAsMTA3LDA.png" alt="Realtora Real Estate Mobile UI" loading="lazy" />
+            <div class="project-overlay"><span class="view-label">Open Project</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Mobile App · Real Estate</div>
+            <h3 class="project-name">Realtora Real Estate Mobile UI</h3>
+            <p class="project-desc">Sleek mobile UI for property discovery and booking — designed for trust, clarity, and seamless navigation.</p>
+            <div class="project-tags"><span class="ptag">Mobile Design</span><span class="ptag">Figma</span><span class="ptag">UI Kit</span></div>
+            <div class="project-links">
+              <a href="https://www.behance.net/gallery/245792605/Realtora-Real-Estate-Mobile-UI" target="_blank" rel="noopener" class="plink plink-b" onclick="event.stopPropagation()"><i class="bi bi-behance"></i> Behance</a>
+              <a href="https://dribbble.com/peacefulatuoha" target="_blank" rel="noopener" class="plink plink-d" onclick="event.stopPropagation()"><i class="bi bi-dribbble"></i></a>
+              <a href="https://www.figma.com/@peacefulatuoha" target="_blank" rel="noopener" class="plink plink-f" onclick="event.stopPropagation()"><i class="bi bi-vector-pen"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 project-item" data-category="dashboard" data-aos="fade-up" data-aos-delay="80">
+        <div class="project-card" onclick="window.open('https://www.behance.net/gallery/245700423/CRM-Dashboard-UI','_blank')">
+          <div class="project-thumb">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/808/37e317245700423.Y3JvcCwyMDYzLDE2MTQsMTAyLDA.png" alt="CRM Dashboard UI" loading="lazy" />
+            <div class="project-overlay"><span class="view-label">Open Project</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Web App · Dashboard</div>
+            <h3 class="project-name">CRM Dashboard UI</h3>
+            <p class="project-desc">Comprehensive CRM dashboard redesign focused on data clarity and workflow efficiency for sales teams.</p>
+            <div class="project-tags"><span class="ptag">Dashboard</span><span class="ptag">Data Viz</span><span class="ptag">SaaS</span></div>
+            <div class="project-links">
+              <a href="https://www.behance.net/gallery/245700423/CRM-Dashboard-UI" target="_blank" rel="noopener" class="plink plink-b" onclick="event.stopPropagation()"><i class="bi bi-behance"></i> Behance</a>
+              <a href="https://dribbble.com/peacefulatuoha" target="_blank" rel="noopener" class="plink plink-d" onclick="event.stopPropagation()"><i class="bi bi-dribbble"></i></a>
+              <a href="https://www.figma.com/@peacefulatuoha" target="_blank" rel="noopener" class="plink plink-f" onclick="event.stopPropagation()"><i class="bi bi-vector-pen"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 project-item" data-category="mobile" data-aos="fade-up" data-aos-delay="160">
+        <div class="project-card" onclick="window.open('https://www.behance.net/gallery/244828705/Ridaa-Ride-Hailing-Mobile-App-UI','_blank')">
+          <div class="project-thumb">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/808/bbb2a7244828705.Y3JvcCwyMTYwLDE2OTAsMjQ2LDA.png" alt="Ridaa Ride Hailing App" loading="lazy" />
+            <div class="project-overlay"><span class="view-label">Open Project</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Mobile App · Transport</div>
+            <h3 class="project-name">Ridaa — Ride Hailing App</h3>
+            <p class="project-desc">End-to-end UI/UX for a ride-hailing app prioritising speed, safety cues, and smooth mobile experience.</p>
+            <div class="project-tags"><span class="ptag">Mobile UI</span><span class="ptag">UX Flow</span><span class="ptag">Transport</span></div>
+            <div class="project-links">
+              <a href="https://www.behance.net/gallery/244828705/Ridaa-Ride-Hailing-Mobile-App-UI" target="_blank" rel="noopener" class="plink plink-b" onclick="event.stopPropagation()"><i class="bi bi-behance"></i> Behance</a>
+              <a href="https://dribbble.com/peacefulatuoha" target="_blank" rel="noopener" class="plink plink-d" onclick="event.stopPropagation()"><i class="bi bi-dribbble"></i></a>
+              <a href="https://www.figma.com/@peacefulatuoha" target="_blank" rel="noopener" class="plink plink-f" onclick="event.stopPropagation()"><i class="bi bi-vector-pen"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 project-item" data-category="mobile" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-card" onclick="window.open('https://www.behance.net/gallery/244007971/Flie-AuroModern-Flight-Booking-Mobile-App-UIUX','_blank')">
+          <div class="project-thumb">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/808/ac4f93244007971.Y3JvcCwyMDk4LDE2NDEsMCw1MQ.png" alt="Flie Auro Flight Booking" loading="lazy" />
+            <div class="project-overlay"><span class="view-label">Open Project</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Mobile App · Travel</div>
+            <h3 class="project-name">Flie Auro — Modern Flight Booking App</h3>
+            <p class="project-desc">A modern, frictionless flight booking experience — from search to seat selection to boarding pass.</p>
+            <div class="project-tags"><span class="ptag">Mobile UI/UX</span><span class="ptag">Travel Tech</span><span class="ptag">Interaction</span></div>
+            <div class="project-links">
+              <a href="https://www.behance.net/gallery/244007971/Flie-AuroModern-Flight-Booking-Mobile-App-UIUX" target="_blank" rel="noopener" class="plink plink-b" onclick="event.stopPropagation()"><i class="bi bi-behance"></i> Behance</a>
+              <a href="https://dribbble.com/peacefulatuoha" target="_blank" rel="noopener" class="plink plink-d" onclick="event.stopPropagation()"><i class="bi bi-dribbble"></i></a>
+              <a href="https://www.figma.com/@peacefulatuoha" target="_blank" rel="noopener" class="plink plink-f" onclick="event.stopPropagation()"><i class="bi bi-vector-pen"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 project-item" data-category="mobile healthcare" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card" onclick="window.open('https://www.behance.net/gallery/243694967/Medic-Patient-Monitoring-Healthcare-Management-App','_blank')">
+          <div class="project-thumb">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/808/3f5e2c243694967.Y3JvcCwxMjk1LDEwMTMsNTEsMA.png" alt="Medic Healthcare App" loading="lazy" />
+            <div class="project-overlay"><span class="view-label">Open Project</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Mobile App · Healthcare</div>
+            <h3 class="project-name">Medic — Patient Monitoring & Healthcare App</h3>
+            <p class="project-desc">A patient-centred healthcare app designed to reduce anxiety and improve clarity of medical information.</p>
+            <div class="project-tags"><span class="ptag">Healthcare</span><span class="ptag">Patient UX</span><span class="ptag">Mobile</span></div>
+            <div class="project-links">
+              <a href="https://www.behance.net/gallery/243694967/Medic-Patient-Monitoring-Healthcare-Management-App" target="_blank" rel="noopener" class="plink plink-b" onclick="event.stopPropagation()"><i class="bi bi-behance"></i> Behance</a>
+              <a href="https://dribbble.com/peacefulatuoha" target="_blank" rel="noopener" class="plink plink-d" onclick="event.stopPropagation()"><i class="bi bi-dribbble"></i></a>
+              <a href="https://www.figma.com/@peacefulatuoha" target="_blank" rel="noopener" class="plink plink-f" onclick="event.stopPropagation()"><i class="bi bi-vector-pen"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="view-all-wrap" data-aos="fade-up">
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:1rem">Showing 5 of 15 projects</p>
+      <a href="projects.html" class="btn-pink">View All 15 Projects <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==============================================================
+     DESIGN GALLERY — Swipe Cards
+============================================================== -->
+<section id="gallery" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8" data-aos="fade-up">
+        <span class="tag">Design Gallery</span>
+        <h2 class="section-title">Swipe through <span class="accent">my work</span></h2>
+        <p class="section-sub">Drag left or right · Use the arrows · Click "View Project" to open on Behance.</p>
+      </div>
+      <!-- Counter -->
+      <div class="col-lg-4 d-flex align-items-end justify-content-lg-end mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="80">
+        <div class="swipe-counter">
+          <span id="swipeCurrent">1</span>
+          <span class="swipe-sep">/</span>
+          <span id="swipeTotal">15</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swipe stage (full-bleed) -->
+  <div class="swipe-outer" data-aos="fade-up" data-aos-delay="120">
+    <div class="swipe-stage" id="swipeStage">
+
+      <!-- Card 1 -->
+      <div class="scard" data-index="0"
+           data-href="https://www.behance.net/gallery/245792605/Realtora-Real-Estate-Mobile-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/318f85245792605.Y3JvcCwyMjg4LDE3OTAsMTA3LDA.png" alt="Realtora" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Real Estate</span>
+          <h3 class="scard-title">Realtora Real Estate Mobile UI</h3>
+          <a href="https://www.behance.net/gallery/245792605/Realtora-Real-Estate-Mobile-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="scard" data-index="1"
+           data-href="https://www.behance.net/gallery/245700423/CRM-Dashboard-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/37e317245700423.Y3JvcCwyMDYzLDE2MTQsMTAyLDA.png" alt="CRM Dashboard" />
+        <div class="scard-info">
+          <span class="scard-cat">Web · Dashboard</span>
+          <h3 class="scard-title">CRM Dashboard UI</h3>
+          <a href="https://www.behance.net/gallery/245700423/CRM-Dashboard-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="scard" data-index="2"
+           data-href="https://www.behance.net/gallery/244828705/Ridaa-Ride-Hailing-Mobile-App-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/bbb2a7244828705.Y3JvcCwyMTYwLDE2OTAsMjQ2LDA.png" alt="Ridaa" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Transport</span>
+          <h3 class="scard-title">Ridaa — Ride Hailing App</h3>
+          <a href="https://www.behance.net/gallery/244828705/Ridaa-Ride-Hailing-Mobile-App-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="scard" data-index="3"
+           data-href="https://www.behance.net/gallery/244250583/Pecaa-Wellness-Supplement-Mobile-UI-Kit">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/fac926244250583.Y3JvcCwxODc2LDE0NjgsNTEsMA.png" alt="Pecaa Wellness" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Wellness</span>
+          <h3 class="scard-title">Pecaa — Wellness Supplement UI Kit</h3>
+          <a href="https://www.behance.net/gallery/244250583/Pecaa-Wellness-Supplement-Mobile-UI-Kit" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="scard" data-index="4"
+           data-href="https://www.behance.net/gallery/244118895/Valentines-Day-Shopper-Minimal-E-Commerce-Mobile-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/c39f5f244118895.Y3JvcCwzNTMzLDI3NjQsMzA2LDA.png" alt="Valentine Shopper" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · E-Commerce</span>
+          <h3 class="scard-title">Valentine's Day Shopper</h3>
+          <a href="https://www.behance.net/gallery/244118895/Valentines-Day-Shopper-Minimal-E-Commerce-Mobile-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="scard" data-index="5"
+           data-href="https://www.behance.net/gallery/244007971/Flie-AuroModern-Flight-Booking-Mobile-App-UIUX">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/ac4f93244007971.Y3JvcCwyMDk4LDE2NDEsMCw1MQ.png" alt="Flie Auro" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Travel</span>
+          <h3 class="scard-title">Flie Auro — Flight Booking App</h3>
+          <a href="https://www.behance.net/gallery/244007971/Flie-AuroModern-Flight-Booking-Mobile-App-UIUX" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="scard" data-index="6"
+           data-href="https://www.behance.net/gallery/243694967/Medic-Patient-Monitoring-Healthcare-Management-App">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/3f5e2c243694967.Y3JvcCwxMjk1LDEwMTMsNTEsMA.png" alt="Medic" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Healthcare</span>
+          <h3 class="scard-title">Medic — Patient Monitoring App</h3>
+          <a href="https://www.behance.net/gallery/243694967/Medic-Patient-Monitoring-Healthcare-Management-App" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="scard" data-index="7"
+           data-href="https://www.behance.net/gallery/243016757/CHAIR-Furniture-Shopping-App-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/9c9950243016757.Y3JvcCw2MTY3LDQ4MjQsMzA1LDA.png" alt="CHAIR" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · E-Commerce</span>
+          <h3 class="scard-title">CHAIR — Furniture Shopping App</h3>
+          <a href="https://www.behance.net/gallery/243016757/CHAIR-Furniture-Shopping-App-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="scard" data-index="8"
+           data-href="https://www.behance.net/gallery/242939091/LotHealth-Healthcare-Dashboard-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/662603242939091.Y3JvcCwxNDY2LDExNDYsMCwxNTY.png" alt="LotHealth" />
+        <div class="scard-info">
+          <span class="scard-cat">Dashboard · Healthcare</span>
+          <h3 class="scard-title">LotHealth — Healthcare Dashboard</h3>
+          <a href="https://www.behance.net/gallery/242939091/LotHealth-Healthcare-Dashboard-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="scard" data-index="9"
+           data-href="https://www.behance.net/gallery/240422913/Spotify-iOS-Design">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/13f106240422913.Y3JvcCwzMjUyLDI1NDQsNjM2LDA.png" alt="Spotify iOS" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · iOS Design</span>
+          <h3 class="scard-title">Spotify iOS Design</h3>
+          <a href="https://www.behance.net/gallery/240422913/Spotify-iOS-Design" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="scard" data-index="10"
+           data-href="https://www.behance.net/gallery/219685247/Chat-Forum-Design">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/e0df41219685247.Y3JvcCwyNDc1LDE5MzUsMTIyLDA.png" alt="Chat Forum" />
+        <div class="scard-info">
+          <span class="scard-cat">App · Social</span>
+          <h3 class="scard-title">Chat Forum Design</h3>
+          <a href="https://www.behance.net/gallery/219685247/Chat-Forum-Design" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="scard" data-index="11"
+           data-href="https://www.behance.net/gallery/218478285/Minimastic-Fintech-UI">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/28c1e3218478285.Y3JvcCwyMTkxLDE3MTQsMTEzLDA.png" alt="Minimastic Fintech" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Fintech</span>
+          <h3 class="scard-title">Minimastic Fintech UI</h3>
+          <a href="https://www.behance.net/gallery/218478285/Minimastic-Fintech-UI" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 13 -->
+      <div class="scard" data-index="12"
+           data-href="https://www.behance.net/gallery/212781785/Popfine">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/c5f65e212781785.Y3JvcCwxMTQ5LDg5OSw2OCww.png" alt="Popfine" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Bold UI</span>
+          <h3 class="scard-title">Popfine</h3>
+          <a href="https://www.behance.net/gallery/212781785/Popfine" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 14 -->
+      <div class="scard" data-index="13"
+           data-href="https://www.behance.net/gallery/206814931/Workout-App">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/fef780206814931.Y3JvcCwyMjA2LDE3MjUsMTY5LDA.png" alt="Workout App" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Fitness</span>
+          <h3 class="scard-title">Workout App</h3>
+          <a href="https://www.behance.net/gallery/206814931/Workout-App" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 15 -->
+      <div class="scard" data-index="14"
+           data-href="https://www.behance.net/gallery/205638255/Food-Ordering-App">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/808/b339c1205638255.Y3JvcCwyMjgzLDE3ODYsNjcsMA.png" alt="Food Ordering" />
+        <div class="scard-info">
+          <span class="scard-cat">Mobile · Food</span>
+          <h3 class="scard-title">Food Ordering App</h3>
+          <a href="https://www.behance.net/gallery/205638255/Food-Ordering-App" target="_blank" rel="noopener" class="scard-btn">
+            View Project <i class="bi bi-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /swipe-stage -->
+
+    <!-- Arrow buttons -->
+    <button class="swipe-arrow swipe-arr-prev" id="swipePrev" aria-label="Previous project">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <button class="swipe-arrow swipe-arr-next" id="swipeNext" aria-label="Next project">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+
+    <!-- Dots -->
+    <div class="swipe-dots" id="swipeDots"></div>
+
+    <!-- Hint text -->
+    <p class="swipe-hint"><i class="bi bi-arrow-left-right"></i> Drag to swipe · Arrow keys work too</p>
+  </div><!-- /swipe-outer -->
+</section>
+    </div>
+  </div>
+
+  
+   
+
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     SKILLS
+============================================================== -->
+<section id="skills" class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-7" data-aos="fade-up">
+        <span class="tag">Skills & Tools</span>
+        <h2 class="section-title">The craft behind <span class="accent">the work</span></h2>
+        <p class="section-sub">Tools and disciplines I use daily to bring ideas from concept to polished product.</p>
+      </div>
+    </div>
+    <div class="skills-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="skill-card"><span class="skill-icon">🎨</span><div class="skill-name">Figma</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="95"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">🔬</span><div class="skill-name">UX Research</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="88"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">📐</span><div class="skill-name">Wireframing</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="92"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">⚡</span><div class="skill-name">Prototyping</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">🧩</span><div class="skill-name">Design Systems</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="84"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">🖱️</span><div class="skill-name">Interaction Design</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="87"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">📱</span><div class="skill-name">Mobile UI</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="91"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">📊</span><div class="skill-name">Dashboard UI</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">🗂️</span><div class="skill-name">Info Architecture</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="83"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">📋</span><div class="skill-name">Usability Testing</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="82"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">🎭</span><div class="skill-name">Visual Design</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div></div>
+      <div class="skill-card"><span class="skill-icon">✏️</span><div class="skill-name">FigJam / Notion</div><div class="skill-bar-wrap"><div class="skill-bar" data-width="93"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     PROCESS
+============================================================== -->
+<section id="process" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-7" data-aos="fade-up">
+        <span class="tag">How I Work</span>
+        <h2 class="section-title">My Design <span class="accent">Process</span></h2>
+        <p class="section-sub">A structured, human-centred approach that delivers thoughtful results consistently.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="process-timeline">
+          <div class="process-item" data-aos="fade-right" data-aos-delay="0"><div class="process-num">01</div><div class="process-content"><h4>Discover & Define</h4><p>Deep-dive through user research, stakeholder interviews, and competitor analysis before touching any design tool.</p></div></div>
+          <div class="process-item" data-aos="fade-right" data-aos-delay="80"><div class="process-num">02</div><div class="process-content"><h4>Ideate & Wireframe</h4><p>Rapid sketching, IA mapping, and low-fi wireframes — exploring multiple directions before committing.</p></div></div>
+          <div class="process-item" data-aos="fade-right" data-aos-delay="160"><div class="process-num">03</div><div class="process-content"><h4>Design & Prototype</h4><p>High-fidelity Figma designs with interactive prototypes. Every interaction considered, every visual decision earns its place.</p></div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="process-timeline">
+          <div class="process-item" data-aos="fade-left" data-aos-delay="40"><div class="process-num">04</div><div class="process-content"><h4>Test & Validate</h4><p>Usability testing with real users. I let data and behaviour guide iteration — not assumptions or ego.</p></div></div>
+          <div class="process-item" data-aos="fade-left" data-aos-delay="120"><div class="process-num">05</div><div class="process-content"><h4>Deliver & Handoff</h4><p>Developer-ready specs and thorough documentation. I stay engaged to ensure the design survives contact with code.</p></div></div>
+          <div class="process-item" data-aos="fade-left" data-aos-delay="200"><div class="process-num">06</div><div class="process-content"><h4>Measure & Iterate</h4><p>Post-launch analytics and continuous improvement. Great design evolves with the product and its users.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     TESTIMONIALS
+============================================================== -->
+<section id="testimonials" class="section-sm" style="background:var(--bg)">
+  <div class="container">
+    <div class="row mb-5"><div class="col-lg-6" data-aos="fade-up"><span class="tag">Kind Words</span><h2 class="section-title">What people <span class="accent">say</span></h2></div></div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Peace has an incredible ability to translate complex ideas into clean, intuitive designs. She asks the right questions before picking up Figma — that's rare and incredibly valuable.</p><div class="t-author"><div class="t-avatar">TK</div><div><div class="t-name">Tunde</div><div class="t-role">Product Manager</div></div></div></div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Working with Peace was a joy. She doesn't just deliver screens — she thinks in systems and outcomes. Our product is significantly better because of her contribution.</p><div class="t-author"><div class="t-avatar">AM</div><div><div class="t-name">Amara</div><div class="t-role">Head of Design</div></div></div></div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Peace brings craft and intentionality I've rarely seen. Her attention to detail, user empathy, and design taste are exceptional — she's the designer every team needs.</p><div class="t-author"><div class="t-avatar">SO</div><div><div class="t-name">Sarah</div><div class="t-role">UX Lead</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     SOCIAL
+============================================================== -->
+<section id="social" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="row mb-5"><div class="col-lg-7" data-aos="fade-up"><span class="tag">Find Me Online</span><h2 class="section-title">Let's <span class="accent">connect</span></h2><p class="section-sub">Follow my design journey, explore my work, or simply reach out — I love connecting with fellow creatives.</p></div></div>
+    <div class="social-grid" data-aos="fade-up" data-aos-delay="80">
+      <a href="https://linktr.ee/peacefulatuoha" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-link-45deg"></i></div><div class="sc-name">Linktree</div><div class="sc-handle">@peacefulatuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://www.behance.net/peace_atuoha" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-behance"></i></div><div class="sc-name">Behance</div><div class="sc-handle">peace_atuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://dribbble.com/peacefulatuoha" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-dribbble"></i></div><div class="sc-name">Dribbble</div><div class="sc-handle">peacefulatuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://www.linkedin.com/in/peace-atuoha/" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-linkedin"></i></div><div class="sc-name">LinkedIn</div><div class="sc-handle">peace-atuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://www.figma.com/@peacefulatuoha" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-vector-pen"></i></div><div class="sc-name">Figma</div><div class="sc-handle">@peacefulatuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://www.instagram.com/peacefulatuoha" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-instagram"></i></div><div class="sc-name">Instagram</div><div class="sc-handle">@peacefulatuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://x.com/peace_uiux" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-twitter-x"></i></div><div class="sc-name">X (Twitter)</div><div class="sc-handle">@peace_uiux</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+      <a href="https://www.tiktok.com/@peacefulatuoha" target="_blank" rel="noopener" class="social-card"><div class="sc-icon"><i class="bi bi-tiktok"></i></div><div class="sc-name">TikTok</div><div class="sc-handle">@peacefulatuoha</div><i class="bi bi-arrow-up-right sc-arrow"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     CONTACT
+============================================================== -->
+<section id="contact" class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="row mb-5"><div class="col-lg-7" data-aos="fade-up"><span class="tag">Let's Talk</span><h2 class="section-title">Have a project in <span class="accent">mind?</span></h2><p class="section-sub">I'm open to freelance, full-time, part-time, permanent, and contract opportunities. Let's build something remarkable together.</p></div></div>
+    <div class="row g-5">
+      <div class="col-lg-4" data-aos="fade-right" data-aos-delay="80">
+        <div class="d-flex align-items-flex-start gap-3 mb-3">
+          <div class="ci-icon-wrap"><i class="bi bi-envelope-fill"></i></div>
+          <div><div class="ci-label">Email</div><div style="font-size:.9rem;color:var(--text)">peaceatuoha@gmail.com</div></div>
+        </div>
+        <div class="d-flex align-items-flex-start gap-3 mb-3">
+          <div class="ci-icon-wrap"><i class="bi bi-geo-alt-fill"></i></div>
+          <div><div class="ci-label">Location</div><div style="font-size:.9rem;color:var(--text)">Lagos, Nigeria 🇳🇬</div></div>
+        </div>
+        <div class="d-flex align-items-flex-start gap-3 mb-4">
+          <div class="ci-icon-wrap"><i class="bi bi-circle-fill" style="font-size:.65rem;color:#22c55e"></i></div>
+          <div><div class="ci-label">Status</div><div style="font-size:.9rem;color:var(--text)">Open to all opportunities</div></div>
+        </div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:1.2rem">
+          <p class="footer-heading" style="margin-bottom:.7rem">Quick Links</p>
+          <div class="footer-socials" style="margin-top:0;gap:.5rem">
+            <a href="https://linktr.ee/peacefulatuoha" target="_blank" class="footer-social" title="Linktree"><i class="bi bi-link-45deg"></i></a>
+            <a href="https://www.behance.net/peace_atuoha" target="_blank" class="footer-social" title="Behance"><i class="bi bi-behance"></i></a>
+            <a href="https://dribbble.com/peacefulatuoha" target="_blank" class="footer-social" title="Dribbble"><i class="bi bi-dribbble"></i></a>
+            <a href="https://www.linkedin.com/in/peace-atuoha/" target="_blank" class="footer-social" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/peacefulatuoha" target="_blank" class="footer-social" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/peace_uiux" target="_blank" class="footer-social" title="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.tiktok.com/@peacefulatuoha" target="_blank" class="footer-social" title="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8" data-aos="fade-left" data-aos-delay="140">
+        <div class="contact-box" id="contactBox">
+
+          <!-- ── THE FORM ──────────────────────────────── -->
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/xbdzaylo"
+            method="POST"
+            novalidate
+          >
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label">Your Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Philip John" required />
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" placeholder="hello@you.com" required />
+              </div>
+              <div class="col-12">
+                <label class="form-label">Subject</label>
+                <input type="text" name="subject" class="form-control" placeholder="Project brief, collaboration, job offer…" />
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea name="message" class="form-control" rows="5" placeholder="Tell me about your project, timeline, and goals…" required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-pink btn-submit" id="submitBtn">
+                  <span data-send-text>Send Message</span>
+                  <i class="bi bi-send-fill" data-send-icon></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- ── SUCCESS STATE (hidden by default) ──── -->
+          <div id="formSuccess" class="form-success" aria-live="polite" aria-hidden="true">
+            <!-- Animated check circle -->
+            <div class="success-ring-wrap">
+              <svg class="success-ring" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle class="ring-track" cx="50" cy="50" r="44"/>
+                <circle class="ring-fill"  cx="50" cy="50" r="44"/>
+                <polyline class="check-mark" points="28,52 43,67 72,34"/>
+              </svg>
+              <!-- Burst particles -->
+              <div class="burst-wrap" id="burstWrap"></div>
+            </div>
+
+            <h3 class="success-title">Message sent! 🎉</h3>
+            <p class="success-sub">
+              Thank you for reaching out, <span id="senderName" class="success-name"></span><br>
+              I'll review your message and get back to you <strong>shortly</strong>.
+            </p>
+            <div class="success-meta">
+              <span><i class="bi bi-clock"></i> Typical reply: within 24–48 hrs</span>
+              <span><i class="bi bi-geo-alt"></i> Lagos, Nigeria 🇳🇬</span>
+            </div>
+            <button class="btn-ghost success-back" id="formSuccessBack">
+              <i class="bi bi-arrow-left"></i> Send another message
+            </button>
+          </div>
+
+        </div><!-- /contact-box -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     FOOTER
+============================================================== -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" style="text-decoration:none"><div class="footer-logo">Peace<span>.</span></div></a>
+        <p class="footer-tagline">Product Designer (UI/UX) crafting meaningful digital experiences from Lagos, Nigeria.</p>
+        <div class="footer-socials">
+          <a href="https://linktr.ee/peacefulatuoha" target="_blank" class="footer-social" title="Linktree"><i class="bi bi-link-45deg"></i></a>
+          <a href="https://www.behance.net/peace_atuoha" target="_blank" class="footer-social" title="Behance"><i class="bi bi-behance"></i></a>
+          <a href="https://dribbble.com/peacefulatuoha" target="_blank" class="footer-social" title="Dribbble"><i class="bi bi-dribbble"></i></a>
+          <a href="https://www.linkedin.com/in/peace-atuoha/" target="_blank" class="footer-social" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.instagram.com/peacefulatuoha" target="_blank" class="footer-social" title="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://x.com/peace_uiux" target="_blank" class="footer-social" title="X"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://www.tiktok.com/@peacefulatuoha" target="_blank" class="footer-social" title="TikTok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-2">
+        <p class="footer-heading">Navigation</p>
+        <ul class="footer-nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <p class="footer-heading">Portfolios</p>
+        <ul class="footer-nav">
+          <li><a href="projects.html">All Projects</a></li>
+          <li><a href="https://www.behance.net/peace_atuoha" target="_blank">Behance</a></li>
+          <li><a href="https://dribbble.com/peacefulatuoha" target="_blank">Dribbble</a></li>
+          <li><a href="https://www.figma.com/@peacefulatuoha" target="_blank">Figma</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2">
+        <p class="footer-heading">Quick Link</p>
+        <a href="https://linktr.ee/peacefulatuoha" target="_blank" class="btn-pink" style="font-size:.75rem;padding:.55rem 1.1rem">Linktree <i class="bi bi-arrow-up-right"></i></a>
+        <div class="mt-2"><a href="projects.html" class="btn-ghost" style="font-size:.75rem;padding:.55rem 1.1rem">All Projects →</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Peace Atuoha. All rights reserved.</p>
+      <p>Designed & built with <span style="color:var(--pink)">♥</span> in Lagos</p>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
