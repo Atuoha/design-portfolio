@@ -198,6 +198,20 @@ AOS.init({ duration:820, easing:'ease-out-quad', once:true, offset:55 });
   });
 })();
 
+/* ── PROJECT CARD LINKS ──────────────────────────────────────── */
+(function initProjectCards() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    const thumb = card.querySelector('.project-thumb');
+    const firstLink = card.querySelector('.project-links a');
+    if (thumb && firstLink) {
+      thumb.style.cursor = 'pointer';
+      thumb.addEventListener('click', () => {
+        window.open(firstLink.href, firstLink.target || '_self');
+      });
+    }
+  });
+})();
+
 /* ── SKILL BARS ──────────────────────────────────────────────── */
 (function initSkillBars() {
   const wrap = document.querySelector('.skills-grid');

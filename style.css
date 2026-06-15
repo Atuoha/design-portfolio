@@ -2672,7 +2672,7 @@ footer {
 
 .swipe-outer {
   position: relative;
-  height: 580px;
+  height: 1000px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -2685,7 +2685,7 @@ footer {
 .swipe-stage {
   position: relative;
   width: 100%;
-  height: 460px;
+  height: 840px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2696,7 +2696,7 @@ footer {
 /* ── Swipe card ── */
 .scard {
   position: absolute;
-  width: min(320px, 78vw);
+  width: min(600px, 90vw);
   aspect-ratio: 9/12;
   border-radius: 22px;
   overflow: hidden;
@@ -2745,6 +2745,17 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.scard-desc {
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0.1rem 0 0.3rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .scard-btn {
@@ -2871,11 +2882,11 @@ footer {
 }
 
 .swipe-arr-prev {
-  left: max(16px, calc(50% - 210px));
+  left: max(16px, calc(50% - 370px));
 }
 
 .swipe-arr-next {
-  right: max(16px, calc(50% - 210px));
+  right: max(16px, calc(50% - 370px));
 }
 
 /* Dots */
@@ -2919,11 +2930,11 @@ footer {
 
 @media (max-width:767px) {
   .swipe-outer {
-    height: 540px;
+    height: 700px;
   }
 
   .swipe-stage {
-    height: 420px;
+    height: 560px;
   }
 
   .swipe-arrow {
