@@ -236,7 +236,7 @@ AOS.init({ duration:820, easing:'ease-out-quad', once:true, offset:55 });
   const lbNext    = document.getElementById('lb-next');
   if (!lightbox || !lbImg) return;
 
-  const cards = document.querySelectorAll('.gallery-card');
+  const cards = document.querySelectorAll('.scard');
   let current = 0;
 
   const images = Array.from(cards).map(c => ({
@@ -258,7 +258,15 @@ AOS.init({ duration:820, easing:'ease-out-quad', once:true, offset:55 });
   function prev() { open((current - 1 + images.length) % images.length); }
   function next() { open((current + 1) % images.length); }
 
-  cards.forEach((c, i) => c.addEventListener('click', () => open(i)));
+  cards.forEach((c, i) => {
+    c.addEventListener('click', (e) => {
+      // Only open if the card is active and the clicked element wasn't a link
+      if (c.classList.contains('sc-active') && !e.target.closest('a')) {
+        open(i);
+      }
+    });
+  });
+
   if (lbClose) lbClose.addEventListener('click', close);
   if (lbPrev)  lbPrev.addEventListener('click',  prev);
   if (lbNext)  lbNext.addEventListener('click',  next);
